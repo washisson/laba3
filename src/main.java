@@ -7,5 +7,6 @@ public class main {
 		while (!m1.empty()){
 			m1.getCoin();
 		}
+		System.out.println("Help!!!");
 	}
 }
