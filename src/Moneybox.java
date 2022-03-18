@@ -1,15 +1,11 @@
-import java.util.EnumMap;
+import java.util.Stack;
 
 public class Moneybox {
 	private Humanoid user;
-	private int [] savedCoins = new int[Coin.MAX_ID + 1];
+	private Stack <Coin> coins;
 
 	public Moneybox(){
-		this(new int[Coin.MAX_ID + 1]);
-	}
-	public Moneybox(int[] args){
-		for(int i = 0; i < args.length && i < savedCoins.length; ++ i)
-			savedCoins[i] = args[i];
+		coins = new Stack<>();
 	}
 
 	public void setUser(Humanoid user) {
@@ -21,30 +17,12 @@ public class Moneybox {
 	}
 
 	public void addCoin(Coin coin){
-		savedCoins[coin.getId()] ++;
-	}
-
-	public  void addCoin(Coin coin, int amount){
-		savedCoins[coin.getId()] += amount;
-	}
-
-	public boolean empty(){
-		for(int i = 0; i < savedCoins.length; ++ i){
-			if(savedCoins[i] > 0)
-				return false;
-		}
-		return true;
+		coins.add(coin);
 	}
 
 	public Coin getCoin(){
-		if(!empty()){
-			for(int i = 0; i < savedCoins.length; ++ i){
-				if(savedCoins[i] > 0){
-					savedCoins[i] --;
-					System.out.println(getUserName() + " достал монету " + Coin.detectCoinOnTheID(i).getName());
-					return Coin.detectCoinOnTheID(i);
-				}
-			}
+		if (!coins.empty()) {
+			return coins.pop();
 		}
 		return null;
 	}

@@ -1,32 +1,31 @@
 public enum Coin {
-	ER5 (0, "5 эре"),
-	ER10 (1, "10 эре"),
-	ER25 (2, "15 эре");
+	ER5 (5),
+	ER10 (10),
+	ER25 (15);
 
 	private int id;
+	private final int nominal;
 	private String name;
 	public final static int MAX_ID = 2;
 
-	static public Coin detectCoinOnTheID(int id){
-		if(id == 0)
-			return  ER5;
-		if(id == 1)
-			return ER10;
-		if(id == 2)
-			return ER25;
-		return null;
+	Coin(int i) {
+		nominal = i;
 	}
 
-	Coin(int i, String s) {
-		id = i;
-		name = s;
+	public static Coin getCoinOfNominal(int nominal){
+		for(Coin coin: Coin.values()){
+			if(coin.getNominal() == nominal)
+				return coin;
+		}
+		throw new RuntimeException("Монеты с номиналом " + nominal + " эре нет.");
 	}
 
-	String getName(){
-		return name;
+	public int getNominal(){
+		return nominal;
 	}
 
-	int getId(){
-		return id;
+	@Override
+	public String toString(){
+		return nominal + " эре";
 	}
 }
