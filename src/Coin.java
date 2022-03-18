@@ -3,10 +3,7 @@ public enum Coin {
 	ER10 (10),
 	ER25 (15);
 
-	private int id;
 	private final int nominal;
-	private String name;
-	public final static int MAX_ID = 2;
 
 	Coin(int i) {
 		nominal = i;

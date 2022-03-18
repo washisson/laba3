@@ -26,4 +26,15 @@ public class Moneybox {
 		}
 		return null;
 	}
+
+	public boolean empty(){
+		return coins.empty();
+	}
+
+	@Override
+	public String toString() {
+		if(user == null)
+			return "Копилка с " + coins.size();
+		return "Копилка с " + coins.size() + " монетами, хозяин которой - " + user.name;
+	}
 }
