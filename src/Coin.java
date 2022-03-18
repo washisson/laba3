@@ -1,7 +1,7 @@
 public enum Coin {
 	ER5 (5),
 	ER10 (10),
-	ER25 (15);
+	ER25 (25);
 
 	private final int nominal;
 
